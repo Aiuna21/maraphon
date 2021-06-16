@@ -1,42 +1,33 @@
+const item = document.querySelector('.item')
+const placeholders = document.querySelectorAll('.placeholders')
 
-Const item = document.querySelector(‘.item’)
-
-Const placeholders = document.querySelectorAll(‘.placeholder’)
-
-
-item.addEventListener(‘dragstart’, dragstart)
-
-item.addEventListener(‘dragend’, dragend)
-
- 
-
-
-for (const placeholder of placeholders) {
-placeholder.addEventListener(‘dragover’)
-placeholder.addEventListener(dragenter’)
-placeholder.addEventListener(‘dragleave’)
-placeholder.addEventListener(‘drop’)
+for(const placeholder of placeholders) {
+ placeholder.addEventListener('dragover', dragover)
+ placeholder.addEventListener('dragenter', dragenter)
+ placeholder.addEventListener('dragleave', dragleave)
+ placeholder.addEventListener('drop', dragdrop)
 
 }
-
 
 function dragstart(event) {
-event.target.classList.add(‘hold’)
-setTimeout(() => event.target.classList.add(‘hide’), 0)
+    event.target.classList.add('hold')
+    setTimeout(() => event.target.classList.add('hide'))
+}
+function dragend(event) {
+     event.target.className ='item'
 }
 
- 
-
- 
-
-function dragend (event){
-event.target.className = ‘item’
-// classList.remove(‘hold’, ‘hide’)
-
+function dragover(event) {
+    event.preventDefault()
 }
-
- 
-
-function dragover(event) {}
-function dragenter(event) {}
-function dragenter(event) {}
+function dragenter(event) {
+    event.target.classList.add('hovered')
+}
+function dragleave(event) {
+    event.target.classList.remove('hovered')
+} 
+    
+function dragdrop(event) {
+    event.target.classList.remove('hovered')
+    event.target.append(item)
+}
