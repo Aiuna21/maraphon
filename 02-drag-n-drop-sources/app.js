@@ -11,14 +11,14 @@ for(const placeholder of placeholders) {
 
 function dragstart(event) {
     event.target.classList.add('hold')
-    setTimeout(() => event.target.classList.add('hide'))
+    setTimeout(() => event.target.classList.add ('hide'), 0 )
 }
 function dragend(event) {
      event.target.className ='item'
 }
 
 function dragover(event) {
-    event.preventDefault()
+     event.preventDefault()
 }
 function dragenter(event) {
     event.target.classList.add('hovered')
